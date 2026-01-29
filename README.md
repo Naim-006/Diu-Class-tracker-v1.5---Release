@@ -1,6 +1,6 @@
 # 🎓 DIU CSE Academic Tracker (Android App)
 
-![Version](https://img.shields.io/badge/version-2.2-blue.svg)
+![Version](https://img.shields.io/badge/version-1.5-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Android-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)
 
