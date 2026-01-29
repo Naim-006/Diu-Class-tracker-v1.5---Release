@@ -1,93 +1,115 @@
-# DIU CSE Academic Tracker 🎓📱
+# 🎓 DIU CSE Academic Tracker (Android App)
 
-![Version](https://img.shields.io/badge/version-2.2-blue.svg) ![Platform](https://img.shields.io/badge/platform-Android-green.svg) ![License](https://img.shields.io/badge/license-MIT-orange.svg)
+![Version](https://img.shields.io/badge/version-2.2-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Android-green.svg)
+![License](https://img.shields.io/badge/license-MIT-orange.svg)
 
-**DIU CSE Academic Tracker** is the ultimate companion app for students of the CSE Department at Daffodil International University. Designed to keep you organized, this app puts your class routine, notices, and academic calendar right in your pocket.
+**DIU CSE Academic Tracker** is a smart Android application built for students of the **Computer Science & Engineering (CSE) Department, Daffodil International University**.  
+It helps students stay organized by providing quick access to class routines, notices, and academic information—all in one place.
+
+---
+
+## ✨ Highlights
+- Designed specifically for **DIU CSE students**
+- Clean, lightweight, and student-friendly UI
+- Works even with limited internet access
+- Saves time and reduces missed classes or notices
 
 ---
 
 ## 📱 Key Features
 
-*   **Smart Class Activity**: Automatically highlights your next class and tracks your daily schedule in real-time.
-*   **Instant Notice Board**: Get real-time updates from your department and teachers. Never miss an important announcement.
-*   **Academic Calendar**: Easy access to the university's academic calendar (exams, holidays, events).
-*   **Faculty Info**: (Optional: if applicable) Quick access to faculty contact information.
-*   **Offline Access**: View your last synced routine even without an internet connection.
-*   **Secure Login**: Personalized experience for Students, CRs, and Faculty.
+- **📊 Smart Class Activity**  
+  Automatically highlights your **current and next class** based on time.
+
+- **📢 Notice Board**  
+  Receive department and teacher notices in real time.
+
+- **📅 Academic Calendar**  
+  View exam dates, holidays, and important academic events.
+
+- **👨‍🏫 Faculty Information**  
+  Quick access to faculty details (if available).
+
+- **📴 Offline Access**  
+  Previously synced routines remain accessible without internet.
+
+- **🔐 Secure Login System**  
+  Role-based access for **Students**, **CRs**, and **Faculty**.
 
 ---
 
-## 📥 How to Install
+## 📥 Installation Guide (APK)
 
-You can install the application directly on your Android device using the APK file.
+You can install the app manually using the APK file.
 
-**Step 1: Download the APK**
-*   Download the latest `DIU-CLASS-TRACKER.apk` released in this repository or shared by the developed.
+### Step 1: Download
+Download the latest **`DIU-CLASS-TRACKER.apk`** from the  
+👉 **GitHub Releases** section of this repository.
 
-**Step 2: Enable Unknown Sources**
-*   If this is your first time installing an APK manually, go to **Settings > Security**.
-*   Enable **"Install from Unknown Sources"** for your browser or file manager.
+### Step 2: Allow Unknown Sources
+- Go to **Settings → Security**
+- Enable **Install unknown apps** for your browser or file manager
 
-**Step 3: Install & Run**
-*   Open the downloaded `.apk` file.
-*   Tap **Install**.
-*   Once installed, tap **Open** to launch the app!
+### Step 3: Install
+- Open the downloaded APK
+- Tap **Install**
+- Launch the app after installation 🎉
+
+> ⚠️ Google Play Protect may show a warning because the app is not installed from Play Store.  
+> This app is safe and open-source.
 
 ---
 
 ## 📖 How to Use
 
-1.  **Login**: Open the app and sign in with your student credentials.
-2.  **Select Your Section**: If you are a student, ensure your batch and section are selected to see the correct routine.
-3.  **Dashboard**: The home screen shows your **Current Class**, **Next Class**, and **Recent Notices**.
-4.  **Routine Tab**: View your full weekly class schedule.
-5.  **Notices Tab**: Browse all past and current notices filtered by your section.
+1. **Login** using your credentials
+2. **Select Batch & Section** (for students)
+3. View **Current Class**, **Next Class**, and **Recent Notices** on the dashboard
+4. Open the **Routine** tab for weekly schedule
+5. Use the **Notices** tab to view all announcements
 
 ---
 
 ## 📸 Screenshots
 
-| **Dashboard** | **Class calender** | **Notice Board** |**Settings** |**cr login** |**side-nav**|
-|:---:|:---:|:---:|
-| <img src="screenshots/dashboard1.jpg" alt="App Dashboard" width="200"/> | <img src="screenshots/calender.jpg" alt="Class Routine" width="200"/> | <img src="screenshots/notice.jpg" alt="Notices" width="200"/> | <img src="screenshots/settings.jpg" alt="Settings" width="200"/> |<img src="screenshots/login.jpg" alt="CR Login" width="200"/>|<img src="screenshots/side-nav.jpg" alt="CR Login" width="200"/>
+| Dashboard | Calendar | Notice Board | Settings | CR Login | Side Navigation |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| <img src="screenshots/dashboard1.jpg" width="200"/> | <img src="screenshots/calender.jpg" width="200"/> | <img src="screenshots/notice.jpg" width="200"/> | <img src="screenshots/settings.jpg" width="200"/> | <img src="screenshots/login.jpg" width="200"/> | <img src="screenshots/side-nav.jpg" width="200"/> |
 
-*(Note: Please ensure screenshot images are placed in a folder named `screenshots/` in your repo)*
-
----
-
-## 🛡️ License & Copyright
-
-### MIT License
-
-Copyright (c) 2024 **[Naim Hossain]**
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-### Copyright Notice
-
-**© 2024 DIU CSE Academic Tracker. All Rights Reserved.**
-This application is developed for educational and management puproses for the Dept. of CSE, Daffodil International University. Unauthorized reproduction or distribution of the core proprietary assets without permission is prohibited.
+> 📌 Make sure all images are placed inside a folder named `screenshots/`
 
 ---
 
+## 🛠️ Technology Stack
+- Android (Java / Kotlin)
+- Android Studio
+- Gradle
 
+---
+
+## ⚠️ Disclaimer
+This application is **not an official DIU product**.  
+It is an **independent student-developed project** created for educational and academic management purposes.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+
+You are free to use, modify, and distribute this software under the license terms.
+
+---
+
+## 👨‍💻 Developer
+
+**Naim Hossain**  
+🇧🇩 Bangladesh  
+
+---
 
 <p align="center">
-  Made with ❤️ by <b>[Your Name]</b>
+  Made with ❤️ for DIU students
 </p>
