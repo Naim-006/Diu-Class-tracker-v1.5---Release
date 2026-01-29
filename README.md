@@ -16,7 +16,7 @@ DIU Class Tracker is an Android application designed for **Daffodil Internationa
 ## 📦 Download APK
 👉 Download the latest version from **GitHub Releases**:
 
-🔗 https://github.com/YOUR_USERNAME/DIU-Class-Tracker/releases
+https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/)
 
 > ⚠️ Enable **“Install from unknown sources”** before installing.
 
