@@ -47,9 +47,9 @@ You can install the application directly on your Android device using the APK fi
 
 ## 📸 Screenshots
 
-| **Dashboard** | **Class calender** | **Notice Board** |**Settings** |**cr login** |
+| **Dashboard** | **Class calender** | **Notice Board** |**Settings** |**cr login** |**side-nav**|
 |:---:|:---:|:---:|
-| <img src="screenshots/dashboard.jpg" alt="App Dashboard" width="200"/> | <img src="screenshots/calender.jpg" alt="Class Routine" width="200"/> | <img src="screenshots/notices.jpg" alt="Notices" width="200"/> | <img src="screenshots/settings.jpg" alt="Settings" width="200"/> |<img src="screenshots/crlogin.jpg" alt="CR Login" width="200"/>
+| <img src="screenshots/dashboard1.jpg" alt="App Dashboard" width="200"/> | <img src="screenshots/calender.jpg" alt="Class Routine" width="200"/> | <img src="screenshots/notice.jpg" alt="Notices" width="200"/> | <img src="screenshots/settings.jpg" alt="Settings" width="200"/> |<img src="screenshots/login.jpg" alt="CR Login" width="200"/>|<img src="screenshots/side-nav.jpg" alt="CR Login" width="200"/>
 
 *(Note: Please ensure screenshot images are placed in a folder named `screenshots/` in your repo)*
 
