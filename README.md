@@ -88,11 +88,6 @@ Download the latest **`DIU-CLASS-TRACKER.apk`** from the
 
 ---
 
-## ⚠️ Disclaimer
-This application is **not an official DIU product**.  
-It is an **independent student-developed project** created for educational and academic management purposes.
-
----
 
 ## 📄 License
 
