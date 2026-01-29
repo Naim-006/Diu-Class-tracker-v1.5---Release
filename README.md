@@ -9,6 +9,15 @@ It helps students stay organized by providing quick access to class routines, no
 
 ---
 
+## 📥 Download App
+
+<p align="center">
+  <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diu-class-tracker.apk">
+    <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android">
+  </a>
+</p>
+
+
 ## ✨ Highlights
 - Designed specifically for **DIU CSE students**
 - Clean, lightweight, and student-friendly UI
