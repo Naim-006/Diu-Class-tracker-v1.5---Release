@@ -9,13 +9,23 @@ It helps students stay organized by providing quick access to class routines, no
 
 ---
 
-## 📥 Download App
+## 📥 Download android App
 
 <p align="center">
   <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diu-class-tracker.apk">
     <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android">
   </a>
 </p>
+
+## 📥 Download ios App
+
+<p align="center" style="color:red;">We are working on it . Ios versrion is not ready yet !</p>
+<p align="center">
+  <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diu-class-tracker.apk">
+    <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=ios">
+  </a>
+</p>
+
 
 
 ## ✨ Highlights
