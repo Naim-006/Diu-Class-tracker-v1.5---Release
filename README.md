@@ -99,7 +99,7 @@ Download the latest **`DIU-CLASS-TRACKER.apk`** from the
 |:--:|:--:|:--:|:--:|:--:|:--:|
 | <img src="screenshots/dashboard1.jpg" width="200"/> | <img src="screenshots/calender.jpg" width="200"/> | <img src="screenshots/notice.jpg" width="200"/> | <img src="screenshots/settings.jpg" width="200"/> | <img src="screenshots/login.jpg" width="200"/> | <img src="screenshots/side-nav.jpg" width="200"/> |
 
-> 📌 Make sure all images are placed inside a folder named `screenshots/`
+> 
 
 ---
 
