@@ -14,7 +14,7 @@ It helps students stay organized by providing quick access to class routines, no
 <p align="center">
   <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk">
     <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android">
-    <img src="logo.png">
+    <img src="logo.png" width="20px" height="20px">
   </a>
 </p>
 
