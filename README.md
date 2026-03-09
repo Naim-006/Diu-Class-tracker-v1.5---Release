@@ -7,6 +7,8 @@
 **DIU CSE Academic Tracker** is a smart Android application built for students of the **Computer Science & Engineering (CSE) Department, Daffodil International University**.  
 It helps students stay organized by providing quick access to class routines, notices, and academic information—all in one place.
 
+<img src="logo.png" width="50px" height="50px" align="center">
+
 ---
 
 ## 📥 Download android App
@@ -14,7 +16,7 @@ It helps students stay organized by providing quick access to class routines, no
 <p align="center">
   <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk">
     <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android">
-    <img src="logo.png" width="20px" height="20px">
+    
   </a>
 </p>
 
