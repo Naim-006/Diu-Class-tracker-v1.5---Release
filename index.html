@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU Class Tracker — smart university companion</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f8fafd;
+            --card-bg: #ffffff;
+            --primary: #0066CC;           /* fresh iOS‑style blue */
+            --primary-dark: #004999;
+            --secondary-bg: #f2f5f9;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 8px 20px -6px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 20px 28px -10px rgba(0, 102, 204, 0.15), 0 8px 16px -6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 30px 40px -15px rgba(0,102,204,0.25);
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --gradient-light: linear-gradient(145deg, #ffffff 0%, #f9fcff 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f6;
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .phone-frame {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .app-store-card {
+            background: var(--card-bg);
+            border-radius: 44px 44px 32px 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(2px);
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* dynamic hero wave */
+        .hero-wave {
+            background: linear-gradient(125deg, #0066CC 0%, #0055aa 55%, #2b7fe0 100%);
+            padding: 28px 24px 40px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-wave::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.25) 0%, transparent 50%);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .app-icon-badge {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .icon-large {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 22px;
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            font-weight: 700;
+            color: #0066CC;
+            border: 1.5px solid rgba(255,255,255,0.4);
+        }
+
+        .icon-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .title-stack h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .title-stack .dev-link {
+            color: rgba(255,255,255,0.85);
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            margin-top: 6px;
+            width: fit-content;
+            background: rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
+            padding: 4px 14px 4px 10px;
+            border-radius: 40px;
+            border: 0.5px solid rgba(255,255,255,0.2);
+            transition: 0.2s;
+        }
+
+        .title-stack .dev-link:hover {
+            background: rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            border: 0.5px solid rgba(255,255,255,0.25);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge i {
+            width: 16px;
+            height: 16px;
+        }
+
+        .verified {
+            background: rgba(0,200,100,0.3);
+            border-color: rgba(100,255,180,0.4);
+        }
+
+        /* install area */
+        .install-panel {
+            padding: 24px 24px 16px 24px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1 1 auto;
+            padding: 15px 20px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            background: white;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border: 1px solid var(--primary-dark);
+            color: white;
+            box-shadow: 0 8px 18px -8px var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -10px #0066CC;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1.5px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: #f2f8ff;
+        }
+
+        .btn-disabled {
+            opacity: 0.7;
+            background: #f1f4f9;
+            border-color: #d0d9e8;
+            color: #6f7c91;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* screenshot carousel — cinematic */
+        .screenshot-wrapper {
+            padding: 24px 0 18px 20px;
+            background: var(--gradient-light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .carousel {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-right: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f5f9;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 4px;
+        }
+        .carousel::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 20px;
+        }
+
+        .shot {
+            flex: 0 0 auto;
+            width: 190px;
+            height: 360px;
+            border-radius: 34px;
+            background: #1e293b;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            scroll-snap-align: start;
+            border: 2px solid white;
+            transition: all 0.2s;
+        }
+
+        .shot:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .shot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* content sections */
+        .content {
+            padding: 24px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.25s;
+        }
+
+        .section:hover {
+            box-shadow: 0 20px 28px -14px rgba(0,102,204,0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .desc {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 16px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            background: #e8f0fe;
+            width: 44px;
+            height: 44px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-text p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* data safety card */
+        .safety-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .safety-item:last-child {
+            border-bottom: none;
+        }
+
+        .safety-icon-small {
+            color: var(--primary);
+            background: #e6f0ff;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .safety-text h5 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .safety-text p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .pill-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f8fafc;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: 0.2s;
+        }
+
+        .pill-link:hover {
+            background: white;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .dev-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        /* mobile sticky */
+        .sticky-mobile {
+            display: none;
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 14px 24px;
+            border-top: 1px solid var(--border);
+            box-shadow: 0 -8px 24px rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.9);
+        }
+
+        /* responsiveness */
+        @media (max-width: 480px) {
+            body { padding: 8px; }
+            .hero-wave { padding: 20px 16px 32px; }
+            .button-group .btn { flex: 1 1 100%; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .sticky-mobile { display: block; }
+            .install-panel .btn-primary { display: none; }  /* hide top install on mobile, we have sticky */
+        }
+
+        /* fallback for images */
+        .shot img {
+            background: linear-gradient(145deg, #cbd5e1, #94a3b8);
+        }
+
+        .ios-note {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="app-store-card">
+
+            <!-- dynamic hero section (app store style) -->
+            <div class="hero-wave">
+                <div class="app-icon-badge">
+                    <div class="icon-large">
+                        <!-- icon placeholder with gradient / logo -->
+                        <span>📘</span>
+                    </div>
+                    <div class="title-stack">
+                        <h1>DIU Class Tracker</h1>
+                        <a href="https://github.com/Naim-006" class="dev-link">
+                            <i data-lucide="user-circle" width="16" height="16"></i> Naim-006
+                        </a>
+                    </div>
+                </div>
+                <div class="badge-row">
+                    <span class="badge"><i data-lucide="graduation-cap" width="14"></i> Education</span>
+                    <span class="badge verified"><i data-lucide="shield-check" width="14"></i> Verified</span>
+                    <span class="badge"><i data-lucide="calendar" width="14"></i> Updated v1.5</span>
+                </div>
+            </div>
+
+            <!-- install card -->
+            <div class="install-panel">
+                <div class="button-group">
+                    <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk" class="btn btn-primary">
+                        <i data-lucide="download" width="18"></i> Install APK
+                    </a>
+                    <button class="btn btn-disabled" disabled>
+                        <i data-lucide="apple" width="18"></i> iOS (soon)
+                    </button>
+                    <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release" class="btn btn-outline">
+                        <i data-lucide="github" width="18"></i> Source
+                    </a>
+                </div>
+                <div class="ios-note">
+                    <i data-lucide="smartphone" width="14"></i> Android 8+ · 19 MB
+                </div>
+            </div>
+
+            <!-- cinematic screenshot carousel -->
+            <div class="screenshot-wrapper">
+                <div class="carousel">
+                    <div class="shot"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='380' viewBox='0 0 200 380'%3E%3Crect width='200' height='380' fill='%231e293b'/%3E%3Ctext x='30' y='150' fill='%23ffffff' font-size='18' font-family='Inter'%3E📊 Dashboard%3C/text%3E%3C/svg%3E" alt="dashboard"></div>
+                    <div class="shot"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='380' viewBox='0 0 200 380'%3E%3Crect width='200' height='380' fill='%230b1e33'/%3E%3Ctext x='30' y='150' fill='%23ffffff' font-size='18' font-family='Inter'%3E📅 Calendar%3C/text%3E%3C/svg%3E" alt="calendar"></div>
+                    <div class="shot"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='380' viewBox='0 0 200 380'%3E%3Crect width='200' height='380' fill='%232d3a4a'/%3E%3Ctext x='30' y='150' fill='%23ffffff' font-size='18' font-family='Inter'%3E🔐 Login%3C/text%3E%3C/svg%3E" alt="login"></div>
+                    <div class="shot"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='380' viewBox='0 0 200 380'%3E%3Crect width='200' height='380' fill='%231e3a5f'/%3E%3Ctext x='30' y='150' fill='%23ffffff' font-size='18' font-family='Inter'%3E📢 Notice%3C/text%3E%3C/svg%3E" alt="notice"></div>
+                    <div class="shot"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='380' viewBox='0 0 200 380'%3E%3Crect width='200' height='380' fill='%232b4c4c'/%3E%3Ctext x='30' y='150' fill='%23ffffff' font-size='18' font-family='Inter'%3E⚙️ Settings%3C/text%3E%3C/svg%3E" alt="settings"></div>
+                    <div class="shot"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='380' viewBox='0 0 200 380'%3E%3Crect width='200' height='380' fill='%233d2b4c'/%3E%3Ctext x='30' y='150' fill='%23ffffff' font-size='18' font-family='Inter'%3E📌 Nav%3C/text%3E%3C/svg%3E" alt="navigation"></div>
+                </div>
+            </div>
+
+            <!-- main content -->
+            <div class="content">
+
+                <!-- info banner -->
+                <div style="background: #f0f7ff; border-radius: 60px; padding: 14px 22px; margin-bottom: 24px; display: flex; gap: 12px; align-items: center; border: 1px solid #cce4ff;">
+                    <i data-lucide="info" style="color:#0066CC; flex-shrink:0;"></i>
+                    <span style="font-size: 14px; color: #004e9e;">Play Store launch soon – APK is safe, verified, and open‑source.</span>
+                </div>
+
+                <!-- about + features -->
+                <div class="section">
+                    <div class="section-title"><i data-lucide="book-open" width="22"></i> About this app</div>
+                    <p class="desc">DIU Class Tracker transforms university life for Daffodil students: real‑time class updates, smart routine sync, CR dashboard and instant alerts.</p>
+                    <div class="feature-grid">
+                        <div class="feature">
+                            <div class="feature-icon"><i data-lucide="calendar-check" width="22"></i></div>
+                            <div class="feature-text"><h4>Auto routine</h4><p>syncs with your section</p></div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i data-lucide="bell-ring" width="22"></i></div>
+                            <div class="feature-text"><h4>smart alerts</h4><p>class changes & notices</p></div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i data-lucide="users" width="22"></i></div>
+                            <div class="feature-text"><h4>CR dashboard</h4><p>manage updates</p></div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i data-lucide="fingerprint" width="22"></i></div>
+                            <div class="feature-text"><h4>private & secure</h4><p>encrypted login</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- data safety -->
+                <div class="section">
+                    <div class="section-title"><i data-lucide="lock" width="22"></i> Data safety</div>
+                    <div class="safety-item">
+                        <div class="safety-icon-small"><i data-lucide="share-2" width="18"></i></div>
+                        <div class="safety-text"><h5>No third‑party sharing</h5><p>developer does not sell data</p></div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-icon-small"><i data-lucide="database" width="18"></i></div>
+                        <div class="safety-text"><h5>Only name + student ID</h5><p>collected for login only</p></div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-icon-small"><i data-lucide="shield" width="18"></i></div>
+                        <div class="safety-text"><h5>Encrypted in transit</h5><p>TLS 1.3</p></div>
+                    </div>
+                </div>
+
+                <!-- developer card -->
+                <div class="section" style="background: linear-gradient(115deg, #fafdff, #ffffff);">
+                    <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 18px;">
+                        <div style="background: #0066CC10; border-radius: 50%; padding: 12px; border: 1px solid #cce4ff;">
+                            <i data-lucide="code-2" width="28" style="color:#0066CC;"></i>
+                        </div>
+                        <div><h3 style="font-size: 18px;">Naim Hossain</h3><p style="color:var(--text-light);">independent developer</p></div>
+                    </div>
+                    <div class="dev-links">
+                        <a href="https://github.com/Naim-006" class="pill-link"><i data-lucide="github" width="16"></i> GitHub</a>
+                        <a href="https://facebook.com/naim.hossain.355d/" class="pill-link"><i data-lucide="facebook" width="16"></i> FB</a>
+                        <a href="mailto:hnayeem005@gmail.com" class="pill-link"><i data-lucide="mail" width="16"></i> Email</a>
+                        <a href="#" class="pill-link"><i data-lucide="file-text" width="16"></i> Privacy</a>
+                    </div>
+                </div>
+
+                <!-- download hint for desktop (only visible >480) -->
+                <div style="font-size:13px; color: var(--text-light); display: flex; gap: 16px; justify-content: center; padding: 8px 0 4px;">
+                    <span><i data-lucide="check-circle" width="14" style="color:#22c55e;"></i> 500+ students</span>
+                    <span><i data-lucide="star" width="14" style="color:#f59e0b;"></i> 4.8 · 120 reviews</span>
+                </div>
+            </div>
+        </div> <!-- end app-store-card -->
+
+        <!-- mobile sticky footer -->
+        <div class="sticky-mobile">
+            <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk" class="btn btn-primary" style="width:100%; margin:0;">
+                <i data-lucide="download"></i> Download APK (direct)
+            </a>
+        </div>
+    </div> <!-- end phone-frame -->
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
