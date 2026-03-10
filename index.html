@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU Class Tracker · smart university</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0f1e;
+            color: #ffffff;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(1, 135, 95, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(25, 103, 210, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+        .orb-1 {
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(1, 135, 95, 0.3);
+            animation: float 20s infinite;
+        }
+        .orb-2 {
+            bottom: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: rgba(25, 103, 210, 0.2);
+            animation: float 25s infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        .main-container {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(18, 25, 40, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 48px;
+            padding: 40px;
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon-glow {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #01875f, #1967d2);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px -10px rgba(1, 135, 95, 0.5);
+            position: relative;
+        }
+
+        .icon-glow::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, #01875f, #1967d2);
+            border-radius: 26px;
+            opacity: 0.5;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        .icon-glow img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-text h1 {
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #b0c4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            color: #8892b0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge.primary {
+            background: rgba(1, 135, 95, 0.15);
+            border-color: rgba(1, 135, 95, 0.3);
+        }
+
+        .badge i {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: center;
+        }
+
+        .hero-left h2 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffffff, #b0c4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero-left p {
+            font-size: 18px;
+            color: #a0aec0;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .platform-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #01875f, #016845);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(1, 135, 95, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -5px rgba(1, 135, 95, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .hero-right {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            background: linear-gradient(145deg, #1a2538, #0f172a);
+            border-radius: 40px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.8);
+            max-width: 300px;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .phone-mockup:hover {
+            transform: translateY(-10px);
+        }
+
+        .phone-mockup img {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            display: block;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 40px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #01875f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: #8892b0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Features */
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #ffffff, #a0aec0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(1, 135, 95, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(1, 135, 95, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: #01875f;
+            border: 1px solid rgba(1, 135, 95, 0.2);
+        }
+
+        .feature-icon i {
+            width: 28px;
+            height: 28px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #8892b0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Screenshots */
+        .screenshots {
+            margin-bottom: 80px;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 5px 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .carousel::-webkit-scrollbar-track {
+            background: #1a2538;
+            border-radius: 10px;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: #01875f;
+            border-radius: 10px;
+        }
+
+        .shot {
+            flex: 0 0 auto;
+            width: 220px;
+            height: 440px;
+            border-radius: 36px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+        }
+
+        .shot:hover {
+            border-color: #01875f;
+            transform: scale(1.02);
+        }
+
+        .shot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(1, 135, 95, 0.1), rgba(25, 103, 210, 0.1));
+            border: 1px solid rgba(1, 135, 95, 0.2);
+            border-radius: 40px;
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            color: #a0aec0;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Developer */
+        .developer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dev-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .dev-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #01875f, #1967d2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .dev-avatar i {
+            width: 28px;
+            height: 28px;
+        }
+
+        .dev-text h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .dev-text p {
+            color: #8892b0;
+            font-size: 14px;
+        }
+
+        .dev-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .dev-links a {
+            color: #8892b0;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .dev-links a:hover {
+            color: #01875f;
+        }
+
+        .dev-links i {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-left h2 {
+                font-size: 48px;
+            }
+            
+            .main-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-left p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .platform-buttons {
+                justify-content: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .main-container {
+                padding: 20px;
+                border-radius: 32px;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo-text h1 {
+                font-size: 28px;
+            }
+
+            .hero-left h2 {
+                font-size: 36px;
+            }
+
+            .hero-left p {
+                font-size: 16px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                white-space: normal;
+            }
+
+            .platform-buttons {
+                flex-direction: column;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .cta-section p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .shot {
+                width: 180px;
+                height: 360px;
+            }
+
+            .developer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .badge-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .badge {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .dev-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Fallback for older browsers */
+        @supports not (background-clip: text) {
+            .logo-text h1,
+            .hero-left h2,
+            .section-title,
+            .stat-number {
+                background: none;
+                -webkit-text-fill-color: white;
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-area">
+                <div class="icon-glow">
+                    <img src="logo.png" alt="DIU Tracker" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Crect x=\'3\' y=\'4\' width=\'18\' height=\'16\' rx=\'2\' ry=\'2\'%3E%3C/rect%3E%3Cline x1=\'8\' y1=\'2\' x2=\'8\' y2=\'6\'%3E%3C/line%3E%3Cline x1=\'16\' y1=\'2\' x2=\'16\' y2=\'6\'%3E%3C/line%3E%3Cline x1=\'3\' y1=\'10\' x2=\'21\' y2=\'10\'%3E%3C/line%3E%3C/svg%3E'">
+                </div>
+                <div class="logo-text">
+                    <h1>DIU Class Tracker</h1>
+                    <p><i data-lucide="map-pin" width="14" height="14"></i> diutracker.vercel.app</p>
+                </div>
+            </div>
+            <div class="badge-group">
+                <span class="badge"><i data-lucide="shield-check"></i> Verified</span>
+                <span class="badge primary"><i data-lucide="smartphone"></i> Android APK</span>
+                <span class="badge"><i data-lucide="globe"></i> Web App</span>
+            </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-left">
+                <h2>Your university life, simplified</h2>
+                <p>Real-time class tracking, automated routines, instant notifications — all in one beautiful app.</p>
+                <div class="platform-buttons">
+                    <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk" class="btn btn-primary">
+                        <i data-lucide="download" width="18" height="18"></i> Download APK
+                    </a>
+                    <a href="https://diutracker.vercel.app" class="btn btn-secondary">
+                        <i data-lucide="globe" width="18" height="18"></i> Open Web App
+                    </a>
+                    <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release" class="btn btn-secondary">
+                        <i data-lucide="github" width="18" height="18"></i> Source
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="phone-mockup">
+                    <img src="screenshots/dashboard1.jpg" alt="App Preview" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'600\' viewBox=\'0 0 300 600\'%3E%3Crect width=\'300\' height=\'600\' fill=\'%231a2538\' rx=\'40\'/%3E%3Ctext x=\'80\' y=\'250\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'20\' font-weight=\'bold\'%3E📱 App%3C/text%3E%3Ctext x=\'70\' y=\'300\' fill=\'%238892b0\' font-family=\'Inter\' font-size=\'16\'%3EPreview%3C/text%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Active Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.8</div>
+                <div class="stat-label">App Store Rating</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">v1.5</div>
+                <div class="stat-label">Latest Release</div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <h2 class="section-title">Everything you need</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="calendar-check"></i></div>
+                <h3>Smart Routine</h3>
+                <p>Auto-syncs with your section. Never miss a class again.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="bell-ring"></i></div>
+                <h3>Instant Alerts</h3>
+                <p>Get notified about class changes, cancellations, and updates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="users"></i></div>
+                <h3>CR Dashboard</h3>
+                <p>Class reps can manage updates and announcements easily.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="lock"></i></div>
+                <h3>Privacy First</h3>
+                <p>Your data is encrypted. No third-party sharing.</p>
+            </div>
+        </div>
+
+        <!-- Screenshots -->
+        <h2 class="section-title">Preview</h2>
+        <div class="screenshots">
+            <div class="carousel">
+                <div class="shot"><img src="screenshots/dashboard1.jpg" alt="Dashboard" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'400\' viewBox=\'0 0 200 400\'%3E%3Crect width=\'200\' height=\'400\' fill=\'%232a3442\' rx=\'30\'/%3E%3Ctext x=\'45\' y=\'200\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'16\'%3EDashboard%3C/text%3E%3C/svg%3E'"></div>
+                <div class="shot"><img src="screenshots/calender.jpg" alt="Calendar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'400\' viewBox=\'0 0 200 400\'%3E%3Crect width=\'200\' height=\'400\' fill=\'%232a3442\' rx=\'30\'/%3E%3Ctext x=\'50\' y=\'200\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'16\'%3ECalendar%3C/text%3E%3C/svg%3E'"></div>
+                <div class="shot"><img src="screenshots/login.jpg" alt="Login" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'400\' viewBox=\'0 0 200 400\'%3E%3Crect width=\'200\' height=\'400\' fill=\'%232a3442\' rx=\'30\'/%3E%3Ctext x=\'60\' y=\'200\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'16\'%3ELogin%3C/text%3E%3C/svg%3E'"></div>
+                <div class="shot"><img src="screenshots/notice.jpg" alt="Notice" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'400\' viewBox=\'0 0 200 400\'%3E%3Crect width=\'200\' height=\'400\' fill=\'%232a3442\' rx=\'30\'/%3E%3Ctext x=\'55\' y=\'200\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'16\'%3ENotice%3C/text%3E%3C/svg%3E'"></div>
+                <div class="shot"><img src="screenshots/settings.jpg" alt="Settings" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'400\' viewBox=\'0 0 200 400\'%3E%3Crect width=\'200\' height=\'400\' fill=\'%232a3442\' rx=\'30\'/%3E%3Ctext x=\'55\' y=\'200\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'16\'%3ESettings%3C/text%3E%3C/svg%3E'"></div>
+                <div class="shot"><img src="screenshots/side-nav.jpg" alt="Navigation" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'400\' viewBox=\'0 0 200 400\'%3E%3Crect width=\'200\' height=\'400\' fill=\'%232a3442\' rx=\'30\'/%3E%3Ctext x=\'40\' y=\'200\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'16\'%3ENavigation%3C/text%3E%3C/svg%3E'"></div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Ready to get started?</h2>
+            <p>Join 500+ DIU students already using Class Tracker daily.</p>
+            <div class="cta-buttons">
+                <a href="https://diutracker.vercel.app" class="btn btn-primary">
+                    <i data-lucide="globe" width="18" height="18"></i> Try Web App
+                </a>
+                <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk" class="btn btn-secondary">
+                    <i data-lucide="download" width="18" height="18"></i> Download APK
+                </a>
+            </div>
+        </div>
+
+        <!-- Developer -->
+        <div class="developer">
+            <div class="dev-info">
+                <div class="dev-avatar">
+                    <i data-lucide="code-2"></i>
+                </div>
+                <div class="dev-text">
+                    <h4>Naim Hossain</h4>
+                    <p>Developer · open source</p>
+                </div>
+            </div>
+            <div class="dev-links">
+                <a href="https://github.com/Naim-006" target="_blank"><i data-lucide="github"></i></a>
+                <a href="https://facebook.com/naim.hossain.355d/" target="_blank"><i data-lucide="facebook"></i></a>
+                <a href="mailto:hnayeem005@gmail.com"><i data-lucide="mail"></i></a>
+                <a href="#"><i data-lucide="file-text"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+                      </html>
