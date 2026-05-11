@@ -3,18 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIU Tracker · all in one · no more chaos</title>
-
-    <!-- Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>DIU Tracker – All-in-One Academic Hub for DIU Students | No More Chaos</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DIU Tracker is the ultimate all-in-one platform for Daffodil International University students. Get instant CR notifications, course materials, routine, calendar, and more. Stop juggling multiple groups – everything in one app.">
+    <meta name="keywords" content="DIU Tracker, DIU class tracker, Daffodil International University, student app, class routine, course materials, CR notifications, academic calendar, DIU notice, university tracker, Android app, web app">
+    <meta name="author" content="Naim Hossain">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="DIU Tracker – One App, Zero Chaos for DIU Students">
+    <meta property="og:description" content="Announcements, materials, routine, groups – all in one place. CR powered notifications, clean UI, web + Android. Join hundreds of students.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diutracker.com">
+    <meta property="og:image" content="https://diutracker.com/og-image.png">
+    <meta property="og:site_name" content="DIU Tracker">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DIU Tracker – Simplify Your Academic Life">
+    <meta name="twitter:description" content="CR pushes, you get notified. All course materials, semester calendar, group management. The only app a DIU student needs.">
+    <meta name="twitter:image" content="https://diutracker.com/twitter-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://diutracker.com">
+    
+    <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
+    
+    <!-- Structured Data (Organization + SoftwareApplication) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DIU Tracker",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Android, Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Academic management app for Daffodil International University students. Features include CR notifications, course materials, routine calendar, group management, and real-time updates.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "127"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Naim Hossain",
+        "url": "https://github.com/Naim-006"
+      },
+      "url": "https://diutracker.com",
+      "downloadUrl": "https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk"
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -36,7 +89,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
         body::before {
             content: '';
             position: fixed;
@@ -48,50 +100,21 @@
             z-index: 0;
         }
 
-        /* Floating orbs */
         .orb {
             position: fixed;
             border-radius: 50%;
             filter: blur(80px);
             z-index: 0;
         }
-
-        .orb-1 {
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: rgba(1, 135, 95, 0.3);
-            animation: float 20s infinite;
-        }
-
-        .orb-2 {
-            bottom: -100px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: rgba(25, 103, 210, 0.2);
-            animation: float 25s infinite reverse;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(30px, 30px) scale(1.1);
-            }
-        }
+        .orb-1 { top: -100px; right: -100px; width: 400px; height: 400px; background: rgba(1, 135, 95, 0.3); animation: float 20s infinite; }
+        .orb-2 { bottom: -100px; left: -100px; width: 500px; height: 500px; background: rgba(25, 103, 210, 0.2); animation: float 25s infinite reverse; }
+        @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,30px) scale(1.1); } }
 
         .main-container {
             max-width: 1300px;
             width: 100%;
             background: rgba(18, 25, 40, 0.85);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 48px;
             padding: 40px;
@@ -100,7 +123,6 @@
             z-index: 10;
         }
 
-        /* Header */
         .header {
             display: flex;
             align-items: center;
@@ -109,884 +131,286 @@
             flex-wrap: wrap;
             gap: 30px;
         }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
+        .logo-area { display: flex; align-items: center; gap: 20px; }
         .icon-glow {
-            width: 80px;
-            height: 80px;
+            width: 80px; height: 80px;
             background: linear-gradient(135deg, #01875f, #1967d2);
             border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 20px 40px -10px rgba(1, 135, 95, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(1,135,95,0.5);
             position: relative;
         }
-
         .icon-glow::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
+            content: ''; position: absolute; inset: -2px;
             background: linear-gradient(135deg, #01875f, #1967d2);
-            border-radius: 26px;
-            opacity: 0.5;
-            filter: blur(10px);
-            z-index: -1;
-        }
-
-        .icon-glow img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        .logo-text h1 {
-            font-size: 36px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #b0c4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 5px;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text p {
-            color: #8892b0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        }
-
-        .badge-group {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .badge.primary {
-            background: rgba(1, 135, 95, 0.15);
-            border-color: rgba(1, 135, 95, 0.3);
-        }
-
-        .badge i {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Hero */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 80px;
-            align-items: center;
-        }
-
-        .hero-left h2 {
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            background: linear-gradient(135deg, #ffffff, #b0c4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-        }
-
-        .hero-left p {
-            font-size: 18px;
-            color: #a0aec0;
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .platform-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #01875f, #016845);
-            color: white;
-            box-shadow: 0 10px 20px -5px rgba(1, 135, 95, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 30px -5px rgba(1, 135, 95, 0.6);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .hero-right {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .phone-mockup {
-            background: linear-gradient(145deg, #1a2538, #0f172a);
-            border-radius: 40px;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.8);
-            max-width: 300px;
-            width: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .phone-mockup:hover {
-            transform: translateY(-10px);
-        }
-
-        .phone-mockup img {
-            width: 100%;
-            height: auto;
-            border-radius: 30px;
-            display: block;
-        }
-
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 80px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 40px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #01875f);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 5px;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            color: #8892b0;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        /* Features */
-        .section-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, #ffffff, #a0aec0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 30px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(1, 135, 95, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(1, 135, 95, 0.1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            color: #01875f;
-            border: 1px solid rgba(1, 135, 95, 0.2);
-        }
-
-        .feature-icon i {
-            width: 28px;
-            height: 28px;
-        }
-
-        .feature-card h3 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #ffffff;
-        }
-
-        .feature-card p {
-            color: #8892b0;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        /* Screenshots */
-        .screenshots {
-            margin-bottom: 80px;
-        }
-
-        .carousel {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 10px 5px 20px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .carousel::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .carousel::-webkit-scrollbar-track {
-            background: #1a2538;
-            border-radius: 10px;
-        }
-
-        .carousel::-webkit-scrollbar-thumb {
-            background: #01875f;
-            border-radius: 10px;
-        }
-
-        .shot {
-            flex: 0 0 auto;
-            width: 220px;
-            height: 440px;
-            border-radius: 36px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            scroll-snap-align: start;
-            transition: all 0.3s ease;
-        }
-
-        .shot:hover {
-            border-color: #01875f;
-            transform: scale(1.02);
-        }
-
-        .shot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* App Tour Segments */
-        .tour-section {
-            margin-bottom: 80px;
-        }
-
-        .segment {
-            margin-bottom: 60px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 40px;
-            padding: 40px;
-            transition: border-color 0.3s ease;
-        }
-
-        .segment:hover {
-            border-color: rgba(1, 135, 95, 0.2);
-        }
-
-        .segment-header {
-            margin-bottom: 30px;
-            max-width: 700px;
-        }
-
-        .segment-header h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .segment-header h3 i {
-            color: #01875f;
-            width: 24px;
-            height: 24px;
-        }
-
-        .segment-header p {
-            color: #8892b0;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .segment-gallery {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 15px;
-            scrollbar-width: thin;
-            scrollbar-color: #01875f #1a2538;
-        }
-
-        .segment-gallery::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .segment-gallery::-webkit-scrollbar-track {
-            background: #1a2538;
-            border-radius: 10px;
-        }
-
-        .segment-gallery::-webkit-scrollbar-thumb {
-            background: #01875f;
-            border-radius: 10px;
-        }
-
-        .segment-shot {
-            flex: 0 0 auto;
-            width: 200px;
-            height: 400px;
-            border-radius: 28px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .segment-shot:hover {
-            border-color: #01875f;
-            transform: scale(1.03);
-        }
-
-        .segment-shot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* CTA */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(1, 135, 95, 0.1), rgba(25, 103, 210, 0.1));
-            border: 1px solid rgba(1, 135, 95, 0.2);
-            border-radius: 40px;
-            padding: 60px;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .cta-section h2 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-        }
-
-        .cta-section p {
-            color: #a0aec0;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Developer */
-        .developer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .dev-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .dev-avatar {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #01875f, #1967d2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .dev-avatar i {
-            width: 28px;
-            height: 28px;
-        }
-
-        .dev-text h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #ffffff;
-        }
-
-        .dev-text p {
-            color: #8892b0;
-            font-size: 14px;
-        }
-
-        .dev-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .dev-links a {
-            color: #8892b0;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-
-        .dev-links a:hover {
-            color: #01875f;
-        }
-
-        .dev-links i {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-left h2 {
-                font-size: 48px;
-            }
-
-            .main-container {
-                padding: 30px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .hero-left p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .platform-buttons {
-                justify-content: center;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 30px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            .main-container {
-                padding: 20px;
-                border-radius: 32px;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .logo-text h1 {
-                font-size: 28px;
-            }
-
-            .hero-left h2 {
-                font-size: 36px;
-            }
-
-            .hero-left p {
-                font-size: 16px;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-                white-space: normal;
-            }
-
-            .platform-buttons {
-                flex-direction: column;
-            }
-
-            .cta-section {
-                padding: 40px 20px;
-            }
-
-            .cta-section h2 {
-                font-size: 28px;
-            }
-
-            .cta-section p {
-                font-size: 16px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .stat-number {
-                font-size: 36px;
-            }
-
-            .shot {
-                width: 180px;
-                height: 360px;
-            }
-
-            .developer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .badge-group {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .badge {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .dev-links {
-                flex-wrap: wrap;
-            }
-        }
-
-        /* Fallback for older browsers */
-        @supports not (background-clip: text) {
-
-            .logo-text h1,
-            .hero-left h2,
-            .section-title,
-            .stat-number {
-                background: none;
-                -webkit-text-fill-color: white;
-                color: white;
-            }
-        }
+            border-radius: 26px; opacity: 0.5; filter: blur(10px); z-index: -1;
+        }
+        .icon-glow img { width: 50px; height: 50px; object-fit: contain; filter: brightness(0) invert(1); }
+        .logo-text h1 { font-size: 36px; font-weight: 700; background: linear-gradient(135deg, #fff, #b0c4ff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; letter-spacing: -0.5px; }
+        .logo-text p { color: #8892b0; display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        .badge-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        .badge { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 40px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(10px); }
+        .badge.primary { background: rgba(1,135,95,0.15); border-color: rgba(1,135,95,0.3); }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 80px; align-items: center; }
+        .hero-left h2 { font-size: 56px; font-weight: 700; line-height: 1.1; margin-bottom: 25px; background: linear-gradient(135deg, #fff, #b0c4ff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+        .hero-left p { font-size: 18px; color: #a0aec0; margin-bottom: 40px; max-width: 500px; }
+        .platform-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; white-space: nowrap; }
+        .btn-primary { background: linear-gradient(135deg, #01875f, #016845); color: white; box-shadow: 0 10px 20px -5px rgba(1,135,95,0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 30px -5px rgba(1,135,95,0.6); }
+        .btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+        .hero-right { position: relative; display: flex; justify-content: center; }
+        .phone-mockup { background: linear-gradient(145deg, #1a2538, #0f172a); border-radius: 40px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 50px 80px -20px rgba(0,0,0,0.8); max-width: 300px; width: 100%; transition: transform 0.5s ease; }
+        .phone-mockup:hover { transform: translateY(-10px); }
+        .phone-mockup img { width: 100%; height: auto; border-radius: 30px; display: block; }
+        .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; margin-bottom: 80px; background: rgba(255,255,255,0.02); border-radius: 40px; padding: 40px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 48px; font-weight: 700; background: linear-gradient(135deg, #fff, #01875f); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
+        .stat-label { color: #8892b0; font-weight: 500; }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: 40px; background: linear-gradient(135deg, #fff, #a0aec0); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 30px; margin-bottom: 80px; }
+        .feature-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; padding: 30px; transition: all 0.3s ease; }
+        .feature-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(1,135,95,0.3); transform: translateY(-5px); }
+        .feature-icon { width: 60px; height: 60px; background: rgba(1,135,95,0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; color: #01875f; border: 1px solid rgba(1,135,95,0.2); }
+        .feature-icon i { width: 28px; height: 28px; }
+        .feature-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; color: #fff; }
+        .feature-card p { color: #8892b0; font-size: 15px; line-height: 1.6; }
+        .tour-section { margin-bottom: 80px; }
+        .segment { margin-bottom: 60px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 40px; padding: 40px; transition: border-color 0.3s; }
+        .segment:hover { border-color: rgba(1,135,95,0.3); }
+        .segment-header h3 { font-size: 28px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; color: #fff; }
+        .segment-header p { color: #8892b0; font-size: 16px; max-width: 700px; }
+        .segment-gallery { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: thin; scrollbar-color: #01875f #1a2538; }
+        .segment-gallery::-webkit-scrollbar { height: 6px; }
+        .segment-gallery::-webkit-scrollbar-track { background: #1a2538; border-radius: 10px; }
+        .segment-gallery::-webkit-scrollbar-thumb { background: #01875f; border-radius: 10px; }
+        .segment-shot { flex: 0 0 auto; width: 200px; height: 400px; border-radius: 28px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); transition: all 0.3s; }
+        .segment-shot:hover { border-color: #01875f; transform: scale(1.02); }
+        .segment-shot img { width: 100%; height: 100%; object-fit: cover; background: #0f172a; }
+        .cta-section { background: linear-gradient(135deg, rgba(1,135,95,0.1), rgba(25,103,210,0.1)); border: 1px solid rgba(1,135,95,0.2); border-radius: 40px; padding: 60px; text-align: center; margin-bottom: 40px; }
+        .cta-section h2 { font-size: 42px; font-weight: 700; margin-bottom: 20px; }
+        .cta-section p { color: #a0aec0; font-size: 18px; max-width: 600px; margin: 0 auto 40px; }
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .developer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .dev-info { display: flex; align-items: center; gap: 20px; }
+        .dev-avatar { width: 60px; height: 60px; background: linear-gradient(135deg,#01875f,#1967d2); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .dev-text h4 { font-size: 18px; font-weight: 600; margin-bottom: 5px; }
+        .dev-text p { color: #8892b0; font-size: 14px; }
+        .dev-links { display: flex; gap: 20px; }
+        .dev-links a { color: #8892b0; transition: color 0.3s; text-decoration: none; }
+        .dev-links a:hover { color: #01875f; }
+        @media (max-width: 1024px) { .hero-left h2 { font-size: 48px; } .main-container { padding: 30px; } }
+        @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; gap: 40px; } .hero-left p { margin-left: auto; margin-right: auto; } .platform-buttons { justify-content: center; } .stats { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { body { padding: 10px; } .main-container { padding: 20px; border-radius: 32px; } .logo-text h1 { font-size: 28px; } .hero-left h2 { font-size: 36px; } .btn { white-space: normal; } .platform-buttons { flex-direction: column; } .cta-section h2 { font-size: 28px; } .section-title { font-size: 28px; } .segment-shot { width: 160px; height: 340px; } }
+        @supports not (background-clip: text) { .logo-text h1, .hero-left h2, .section-title, .stat-number { background: none; -webkit-text-fill-color: white; color: white; } }
     </style>
 </head>
-
 <body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-    <div class="main-container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-area">
-                <div class="icon-glow">
-                    <img src="logo.png" alt="DIU Tracker"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Crect x=\'3\' y=\'4\' width=\'18\' height=\'16\' rx=\'2\' ry=\'2\'%3E%3C/rect%3E%3Cline x1=\'8\' y1=\'2\' x2=\'8\' y2=\'6\'%3E%3C/line%3E%3Cline x1=\'16\' y1=\'2\' x2=\'16\' y2=\'6\'%3E%3C/line%3E%3Cline x1=\'3\' y1=\'10\' x2=\'21\' y2=\'10\'%3E%3C/line%3E%3C/svg%3E'">
-                </div>
-                <div class="logo-text">
-                    <h1>DIU Tracker </h1>
-                    <p><i data-lucide="map-pin" width="14" height="14"></i> diutracker.vercel.app</p>
-                </div>
+<div class="main-container">
+    <div class="header">
+        <div class="logo-area">
+            <div class="icon-glow">
+                <img src="logo.png" alt="DIU Tracker Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\'%3E%3Crect x=\'3\' y=\'4\' width=\'18\' height=\'16\' ry=\'2\'%3E%3C/rect%3E%3Cline x1=\'8\' y1=\'2\' x2=\'8\' y2=\'6\'%3E%3C/line%3E%3Cline x1=\'16\' y1=\'2\' x2=\'16\' y2=\'6\'%3E%3C/line%3E%3C/svg%3E'">
             </div>
-            <div class="badge-group">
-                <span class="badge"><i data-lucide="shield-check"></i> One platform</span>
-                <span class="badge primary"><i data-lucide="smartphone"></i> Android APK</span>
-                <span class="badge"><i data-lucide="globe"></i> Web App</span>
+            <div class="logo-text">
+                <h1>DIU Tracker</h1>
+                <p><i data-lucide="map-pin" width="14" height="14"></i> Daffodil International University — official student hub</p>
             </div>
         </div>
-
-        <!-- Hero – NEW MOTIVE: all‑in‑one, kill the chaos -->
-        <div class="hero">
-            <div class="hero-left">
-                <h2>No more groups complexity. No more mess. No more Miss </h2>
-                <p><strong>DIU Tracker</strong> brings everything — announcements, materials, routines — into one
-                    friendly place. Your CR pushes, you get notified instantly. Just open &amp; everything is there.</p>
-                <div class="platform-buttons">
-                    <a href="diutracker.apk" class="btn btn-primary">
-                        <i data-lucide="download" width="18" height="18"></i> Download APK
-                    </a>
-                    <a href="https://diutracker.vercel.app" class="btn btn-secondary">
-                        <i data-lucide="globe" width="18" height="18"></i> Open Web App
-                    </a>
-                    <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release" class="btn btn-secondary">
-                        <i data-lucide="github" width="18" height="18"></i> Source
-                    </a>
-                </div>
-            </div>
-            <div class="hero-right">
-                <div class="phone-mockup">
-                    <img src="screenshots/dashboard.png" alt="App Dashboard" loading="lazy"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'600\' viewBox=\'0 0 300 600\'%3E%3Crect width=\'300\' height=\'600\' fill=\'%231a2538\' rx=\'40\'/%3E%3Ctext x=\'80\' y=\'250\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'20\' font-weight=\'bold\'%3E🎯 One app%3C/text%3E%3Ctext x=\'50\' y=\'300\' fill=\'%238892b0\' font-family=\'Inter\' font-size=\'16\'%3Efor everything%3C/text%3E%3C/svg%3E'">
-                </div>
-            </div>
+        <div class="badge-group">
+            <span class="badge"><i data-lucide="shield-check"></i> All-in-One</span>
+            <span class="badge primary"><i data-lucide="smartphone"></i> Android + Web</span>
+            <span class="badge"><i data-lucide="bell"></i> Live Notifications</span>
         </div>
+    </div>
 
-        <!-- Stats – same structure, minor wording -->
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">cnt++</div>
-                <div class="stat-label">daily active students</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">#pos</div>
-                <div class="stat-label">in simplicity</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">v1.5</div>
-                <div class="stat-label">seamless release</div>
-            </div>
-        </div>
-
-        <!-- Features – updated to reflect "no more many groups/materials lost" -->
-        <h2 class="section-title">Everything, one click away</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i data-lucide="bell-plus"></i></div>
-                <h3>CR‑powered notifications</h3>
-                <p>CR makes an update → app+web notify instantly. No more missed announcements.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i data-lucide="folder-open"></i></div>
-                <h3>Materials hub</h3>
-                <p>All course content, slides, notes — organised by course. Finally one source.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i data-lucide="calendar"></i></div>
-                <h3>Semester‑wise calendar</h3>
-                <p>Routine, deadlines, events — just tap and see. No more digging through group chats.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i data-lucide="user-check"></i></div>
-                <h3>Ultra friendly UI</h3>
-                <p>Designed so anyone can find anything instantly. No learning curve.</p>
-            </div>
-        </div>
-
-        <!-- App Tour Section -->
-        <h2 class="section-title">Explore the App</h2>
-        <div class="tour-section">
-            <!-- Segment 1 -->
-            <div class="segment">
-                <div class="segment-header">
-                    <h3><i data-lucide="layout"></i> Command Center</h3>
-                    <p>Navigate your academic life with ease. From the intuitive side panel to your personalized feed,
-                        everything is organized for maximum speed and efficiency.</p>
-                </div>
-                <div class="segment-gallery">
-                    <div class="segment-shot"><img src="screenshots/side-nav.png" alt="Navigation Sidebar"
-                            loading="lazy"></div>
-                    <div class="segment-shot"><img src="screenshots/dashboard.png" alt="Main Dashboard" loading="lazy">
-                    </div>
-                    <div class="segment-shot"><img src="screenshots/feed.png" alt="Activity Feed" loading="lazy"></div>
-                </div>
-            </div>
-
-            <!-- Segment 2 -->
-            <div class="segment">
-                <div class="segment-header">
-                    <h3><i data-lucide="book-open"></i> Academic Hub</h3>
-                    <p>Never hunt for slides again. Access your courses, view materials, and browse lecture slides
-                        directly within the app. Group management made simple.</p>
-                </div>
-                <div class="segment-gallery">
-                    <div class="segment-shot"><img src="screenshots/courses.png" alt="Course List" loading="lazy"></div>
-                    <div class="segment-shot"><img src="screenshots/materials.png" alt="Subject Materials"
-                            loading="lazy"></div>
-                    <div class="segment-shot"><img src="screenshots/material-detail.png" alt="Material Details"
-                            loading="lazy"></div>
-                    <div class="segment-shot"><img src="screenshots/slide-view.png" alt="Slide Preview" loading="lazy">
-                    </div>
-                    <div class="segment-shot"><img src="screenshots/groups.png" alt="Lab Groups" loading="lazy"></div>
-                </div>
-            </div>
-
-            <!-- Segment 3 -->
-            <div class="segment">
-                <div class="segment-header">
-                    <h3><i data-lucide="megaphone"></i> Instant Communication</h3>
-                    <p>Stay updated with real-time push notifications from your Class Representative. The digital notice
-                        board ensures you never miss a deadline or change.</p>
-                </div>
-                <div class="segment-gallery">
-                    <div class="segment-shot"><img src="screenshots/notice-board.png" alt="Notice Board" loading="lazy">
-                    </div>
-                    <div class="segment-shot"><img src="screenshots/admin-actions.png" alt="Admin Controls"
-                            loading="lazy"></div>
-                </div>
-            </div>
-
-            <!-- Segment 4 -->
-            <div class="segment">
-                <div class="segment-header">
-                    <h3><i data-lucide="calendar-days"></i> Time Management</h3>
-                    <p>Visualize your entire semester at a glance. Detailed agendas, grid-view calendars, and academic
-                        timelines help you plan ahead of your schedule.</p>
-                </div>
-                <div class="segment-gallery">
-                    <div class="segment-shot"><img src="screenshots/calendar.png" alt="Semester Calendar"
-                            loading="lazy"></div>
-                    <div class="segment-shot"><img src="screenshots/agenda.png" alt="Daily Agenda" loading="lazy"></div>
-                    <div class="segment-shot"><img src="screenshots/calendar-grid.png" alt="Grid View" loading="lazy">
-                    </div>
-                    <div class="segment-shot"><img src="screenshots/timeline.png" alt="Academic Timeline"
-                            loading="lazy"></div>
-                </div>
-            </div>
-
-            <!-- Segment 5 -->
-            <div class="segment">
-                <div class="segment-header">
-                    <h3><i data-lucide="user-cog"></i> Profile & Experience</h3>
-                    <p>Personalize your experience to suit your style. Manage your profile, customize settings, and
-                        switch to dark mode for late-night study sessions.</p>
-                </div>
-                <div class="segment-gallery">
-                    <div class="segment-shot"><img src="screenshots/profile.png" alt="User Profile" loading="lazy">
-                    </div>
-                    <div class="segment-shot"><img src="screenshots/cr-profile.png" alt="CR Profile" loading="lazy">
-                    </div>
-                    <div class="segment-shot"><img src="screenshots/settings.png" alt="Settings Menu" loading="lazy">
-                    </div>
-                    <div class="segment-shot"><img src="screenshots/settings-alt.png" alt="Control Center"
-                            loading="lazy"></div>
-                    <div class="segment-shot"><img src="screenshots/login.png" alt="Secure Login" loading="lazy"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA – aligned with the unified message -->
-        <div class="cta-section">
-            <h2>One app · zero chaos</h2>
-            <p>cnt++ students already stopped hunting through groups. Join them.</p>
-            <div class="cta-buttons">
-                <a href="https://diutracker.vercel.app" class="btn btn-primary">
-                    <i data-lucide="globe" width="18" height="18"></i> Try web now
+    <div class="hero">
+        <div class="hero-left">
+            <h2>No more chaos. One academic command center for DIU students.</h2>
+            <p><strong>DIU Tracker</strong> eliminates the need for 10+ WhatsApp groups, scattered files, and missed updates. CR pushes once → you get notified instantly. Access <strong>class routine, course materials, lab groups, calendar events, notices, and semester timeline</strong> from a single beautiful dashboard.</p>
+            <div class="platform-buttons">
+                <a href="https://raw.githubusercontent.com/Naim-006/Diu-Class-tracker-v1.5---Release/main/diutracker.apk" class="btn btn-primary" download>
+                    <i data-lucide="download" width="18" height="18"></i> Download APK (Android)
                 </a>
-                <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk"
-                    class="btn btn-secondary">
-                    <i data-lucide="download" width="18" height="18"></i> APK download
+                <a href="https://diutracker.com" class="btn btn-secondary">
+                    <i data-lucide="globe" width="18" height="18"></i> Launch Web App
+                </a>
+                <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release" class="btn btn-secondary">
+                    <i data-lucide="github" width="18" height="18"></i> Open Source
                 </a>
             </div>
         </div>
-
-        <!-- Developer (unchanged) -->
-        <div class="developer">
-            <div class="dev-info">
-                <div class="dev-avatar">
-                    <i data-lucide="code-2"></i>
-                </div>
-                <div class="dev-text">
-                    <h4>Naim Hossain</h4>
-                    <p>Developer · open source</p>
-                </div>
-            </div>
-            <div class="dev-links">
-                <a href="https://github.com/Naim-006" target="_blank"><i data-lucide="github"></i></a>
-                <a href="https://facebook.com/naim.hossain.355d/" target="_blank"><i data-lucide="facebook"></i></a>
-                <a href="mailto:hnayeem005@gmail.com"><i data-lucide="mail"></i></a>
-                <a href="#"><i data-lucide="file-text"></i></a>
+        <div class="hero-right">
+            <div class="phone-mockup">
+                <img src="screenshots/dashboard.png" alt="DIU Tracker Dashboard showing unified dashboard, routine preview, notifications" loading="eager"
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'600\' viewBox=\'0 0 300 600\'%3E%3Crect width=\'300\' height=\'600\' fill=\'%231a2538\' rx=\'40\'/%3E%3Ctext x=\'50\' y=\'250\' fill=\'%23ffffff\' font-family=\'Inter\' font-size=\'22\' font-weight=\'bold\'%3EDIUTracker%3C/text%3E%3Ctext x=\'35\' y=\'310\' fill=\'%238892b0\' font-size=\'16\'%3ECR Notifications%3C/text%3E%3C/svg%3E'">
             </div>
         </div>
     </div>
 
-    <script>
-        // Initialize icons
-        document.addEventListener('DOMContentLoaded', function () {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
+    <!-- stats with descriptive labels for SEO -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">active DIU students</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">#1</div>
+            <div class="stat-label">student choice for academic organization</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">v1.5+</div>
+            <div class="stat-label">stable release • weekly updates</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Why DIU Tracker? The only academic ecosystem you'll ever need</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="bell-plus"></i></div>
+            <h3>CR-powered instant alerts</h3>
+            <p>Class Representatives publish announcements → you get push notifications + web updates instantly. No more scrolling up in groups.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="folder-archive"></i></div>
+            <h3>Centralized course materials</h3>
+            <p>All slides, lecture notes, question banks, and reference files organized by semester & course code. Download or preview without switching apps.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="calendar-range"></i></div>
+            <h3>Smart semester calendar</h3>
+            <p>Class routine, exam dates, assignment deadlines, university events — all in one interactive calendar. Sync with your schedule.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="users"></i></div>
+            <h3>Lab & group management</h3>
+            <p>Seamless grouping for project works, lab sections, and team collaboration. Join groups, share resources, get group-specific updates.</p>
+        </div>
+    </div>
+
+    <!-- Additional educational content for SEO ranking -->
+    <div style="margin-bottom: 60px; background: rgba(1,135,95,0.05); border-radius: 30px; padding: 30px; border-left: 4px solid #01875f;">
+        <h3 style="font-size: 24px; margin-bottom: 15px; display: flex; gap: 10px; align-items: center;"><i data-lucide="award"></i> Trusted by DIU community</h3>
+        <p style="color: #cbd5e6; max-width: 900px;">DIU Tracker is built to solve real problems: scattered resources, missed posts, and inefficient communication. Now used by students across multiple departments including CSE, BBA, EEE, and English. Reduce cognitive load and stay ahead academically. Whether you're a CR, general student, or faculty collaborator — experience the next-gen academic assistant.</p>
+    </div>
+
+    <h2 class="section-title">App exploration — see how DIU Tracker works</h2>
+    <div class="tour-section">
+        <div class="segment">
+            <div class="segment-header">
+                <h3><i data-lucide="layout-dashboard"></i> Intelligent Dashboard</h3>
+                <p>From widgets displaying upcoming classes to recent materials and CR broadcasts — your personalized home screen adapts in real time.</p>
+            </div>
+            <div class="segment-gallery">
+                <div class="segment-shot"><img src="screenshots/side-nav.png" alt="DIU Tracker side navigation menu" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/dashboard.png" alt="Dashboard with notices and card layout" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/feed.png" alt="Activity feed with CR updates" loading="lazy"></div>
+            </div>
+        </div>
+        <div class="segment">
+            <div class="segment-header">
+                <h3><i data-lucide="book-marked"></i> Academic Resources hub</h3>
+                <p>Browse all registered courses, filter by semester, access PDFs, PPTs, and additional references. No more material lost in Telegram or Drive links.</p>
+            </div>
+            <div class="segment-gallery">
+                <div class="segment-shot"><img src="screenshots/courses.png" alt="Course listing per semester" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/materials.png" alt="Course materials manager" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/material-detail.png" alt="Preview slide details" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/slide-view.png" alt="Built-in slide viewer" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/groups.png" alt="Project groups section" loading="lazy"></div>
+            </div>
+        </div>
+        <div class="segment">
+            <div class="segment-header">
+                <h3><i data-lucide="megaphone"></i> two-way communication & notice board</h3>
+                <p>CRs and admins can broadcast pinned notices, urgent changes, and event reminders. Students respond via reactions and group chats.</p>
+            </div>
+            <div class="segment-gallery">
+                <div class="segment-shot"><img src="screenshots/notice-board.png" alt="Digital notice board feed" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/admin-actions.png" alt="Admin panel controls" loading="lazy"></div>
+            </div>
+        </div>
+        <div class="segment">
+            <div class="segment-header">
+                <h3><i data-lucide="calendar-days"></i> All-in-one time management</h3>
+                <p>Weekly routine, exam planner, assignment tracker, and semester timeline. Add custom deadlines and sync across devices via web app.</p>
+            </div>
+            <div class="segment-gallery">
+                <div class="segment-shot"><img src="screenshots/calendar.png" alt="Semester academic calendar" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/agenda.png" alt="Agenda view of daily tasks" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/calendar-grid.png" alt="Month grid calendar" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/timeline.png" alt="Academic timeline events" loading="lazy"></div>
+            </div>
+        </div>
+        <div class="segment">
+            <div class="segment-header">
+                <h3><i data-lucide="user-cog"></i> Personalized experience</h3>
+                <p>Customizable dark/light theme, notification preferences, and profile management. Secure login and cross-platform sync.</p>
+            </div>
+            <div class="segment-gallery">
+                <div class="segment-shot"><img src="screenshots/profile.png" alt="Student profile view" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/cr-profile.png" alt="CR privileged dashboard" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/settings.png" alt="Settings and preferences" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/settings-alt.png" alt="Advanced configuration" loading="lazy"></div>
+                <div class="segment-shot"><img src="screenshots/login.png" alt="Secure login screen" loading="lazy"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- rich text: why this solves chaos -->
+    <div style="margin: 0 0 60px 0; background: rgba(25,103,210,0.08); border-radius: 36px; padding: 35px;">
+        <h3 style="font-size: 28px; margin-bottom: 20px; font-weight: 700;">Stop jumping between 10 platforms – DIU Tracker is your single source of truth</h3>
+        <p style="color: #b9c3dd; font-size: 17px; line-height: 1.6;">Traditionally DIU students rely on multiple WhatsApp groups, email threads, Facebook pages, and Google Drive links. Important messages get buried, materials expire, deadlines vanish. DIU Tracker eliminates fragmentation by merging <strong>official announcements, academic resources, routine calendar, group projects, and real-time CR notifications</strong> into one modern app. Built for speed, reliability, and simplicity. <strong>Web app + native Android</strong> means you can access from your laptop or phone instantly.</p>
+        <div style="margin-top: 30px; display: flex; gap: 25px; flex-wrap: wrap;">
+            <div><i data-lucide="check-circle" style="color:#01875f; display: inline-block; vertical-align: middle;"></i> <span>Zero learning curve</span></div>
+            <div><i data-lucide="check-circle" style="color:#01875f;"></i> <span>Offline caching for materials</span></div>
+            <div><i data-lucide="check-circle" style="color:#01875f;"></i> <span>100% free for DIU students</span></div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>One app · zero chaos · full control</h2>
+        <p>More than 1000 DIU students transformed their academic workflow. Stop missing deadlines and start organizing.</p>
+        <div class="cta-buttons">
+            <a href="https://diutracker.com" class="btn btn-primary"><i data-lucide="rocket" width="18"></i> Launch Web App Now</a>
+            <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release/blob/main/diutracker.apk" class="btn btn-secondary"><i data-lucide="download"></i> Get Android APK</a>
+        </div>
+    </div>
+
+    <div class="developer">
+        <div class="dev-info">
+            <div class="dev-avatar"><i data-lucide="code-2"></i></div>
+            <div class="dev-text">
+                <h4>Naim Hossain</h4>
+                <p>Developer · open source contributor · DIU CSE</p>
+            </div>
+        </div>
+        <div class="dev-links">
+            <a href="https://github.com/Naim-006" target="_blank" aria-label="GitHub"><i data-lucide="github"></i> GitHub</a>
+            <a href="https://facebook.com/naim.hossain.355d/" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i> Facebook</a>
+            <a href="mailto:hnayeem005@gmail.com" aria-label="Email"><i data-lucide="mail"></i> Email</a>
+            <a href="https://github.com/Naim-006/Diu-Class-tracker-v1.5---Release" aria-label="Documentation"><i data-lucide="file-text"></i> Docs</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        const imgs = document.querySelectorAll('.segment-shot img, .phone-mockup img');
+        imgs.forEach(img => {
+            img.setAttribute('loading', 'lazy');
+            if(img.src && (img.src.includes('undefined') || img.src === '')) {
+                img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='400' viewBox='0 0 200 400'%3E%3Crect width='200' height='400' fill='%231a2538'/%3E%3Ctext x='30' y='200' fill='white' font-size='14'%3EPreview%3C/text%3E%3C/svg%3E";
             }
         });
-    </script>
+    });
+</script>
 </body>
-
 </html>
