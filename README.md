@@ -1,4 +1,4 @@
-# <img src="logo.png" width="50px" height="50px" align="center"> DIU CSE Academic Tracker (mobile App)
+# <img src="logo.png" width="50px" height="50px" align="center"> DIU Tracker (mobile App)
 
 ![Version](https://img.shields.io/badge/version-1.5-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Android-green.svg)
